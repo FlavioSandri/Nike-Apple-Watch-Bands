@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Pulse</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/liquid-glass.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <!-- Liquid Glass Background -->
+    <div class="liquid-glass-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">PULSE</div>
+                <span class="logo-text">Nike × Apple</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="watches.html" class="nav-link">Watches</a>
+                <a href="bands.html" class="nav-link">Bands</a>
+                <a href="register.html" class="nav-link">Account</a>
+                <a href="support.html" class="nav-link active">Support</a>
+                <a href="#" class="cart-icon">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Support Hero -->
+    <section class="support-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">How Can We Help?</h1>
+            <p class="hero-subtitle">Get assistance with orders, products, or any questions about Pulse.</p>
+            
+            <!-- Search Support -->
+            <div class="support-search">
+                <div class="search-container">
+                    <input type="text" placeholder="Search for answers..." class="search-input">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <p class="search-suggestion">Popular: Returns, Shipping, Band Compatibility, Liquid-Glass Care</p>
+            </div>
+        </div>
+        
+        <div class="hero-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock assistance</p>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>98% Satisfaction</h3>
+                <p>Customer happiness rate</p>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Live Chat</h3>
+                <p>Instant help available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help Section -->
+    <section class="quick-help-section">
+        <div class="section-header">
+            <h2>Quick Help Topics</h2>
+            <p>Find answers to common questions</p>
+        </div>
+        
+        <div class="help-cards">
+            <a href="#orders" class="help-card">
+                <div class="card-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <h3>Orders & Shipping</h3>
+                <p>Track orders, shipping info, delivery times</p>
+                <span class="card-arrow">→</span>
+            </a>
+            
+            <a href="#returns" class="help-card">
+                <div class="card-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>Returns & Exchanges</h3>
+                <p>Return policy, exchanges, refunds</p>
+                <span class="card-arrow">→</span>
+            </a>
+            
+            <a href="#bands" class="help-card">
+                <div class="card-icon">
+                    <i class="fas fa-watch"></i>
+                </div>
+                <h3>Band Compatibility</h3>
+                <p>Fit guide, sizing, watch compatibility</p>
+                <span class="card-arrow">→</span>
+            </a>
+            
+            <a href="#liquid" class="help-card">
+                <div class="card-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3>Liquid-Glass Care</h3>
+                <p>Cleaning, maintenance, warranty</p>
+                <span class="card-arrow">→</span>
+            </a>
+            
+            <a href="#account" class="help-card">
+                <div class="card-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Account & Login</h3>
+                <p>Password reset, Apple login, profile</p>
+                <span class="card-arrow">→</span>
+            </a>
+            
+            <a href="#technical" class="help-card">
+                <div class="card-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Technical Support</h3>
+                <p>Website issues, payment problems</p>
+                <span class="card-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="contact-options-section">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <p>Choose your preferred way to get help</p>
+        </div>
+        
+        <div class="contact-methods">
+            <div class="contact-method">
+                <div class="method-icon live-chat">
+                    <i class="fas fa-comment-dots"></i>
+                </div>
+                <h3>Live Chat</h3>
+                <p>Chat with our support team in real-time</p>
+                <button class="btn-contact" id="startChatBtn">
+                    <i class="fas fa-comment"></i>
+                    Start Chat
+                </button>
+                <span class="method-status active">• Available Now</span>
+            </div>
+            
+            <div class="contact-method">
+                <div class="method-icon email">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email Support</h3>
+                <p>Send us an email and we'll respond within 24 hours</p>
+                <a href="mailto:support@pulse.com" class="btn-contact">
+                    <i class="fas fa-envelope"></i>
+                    Send Email
+                </a>
+                <span class="method-status">Response: 24 hours</span>
+            </div>
+            
+            <div class="contact-method">
+                <div class="method-icon phone">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Phone Support</h3>
+                <p>Call us for immediate assistance</p>
+                <a href="tel:+18005551234" class="btn-contact">
+                    <i class="fas fa-phone"></i>
+                    Call Now
+                </a>
+                <span class="method-status">Mon-Fri, 9AM-6PM EST</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Send us a Message</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+            
+            <form class="contact-form" id="supportContactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contactName">Full Name *</label>
+                        <input type="text" id="contactName" placeholder="Your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address *</label>
+                        <input type="email" id="contactEmail" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactSubject">Subject *</label>
+                    <select id="contactSubject" required>
+                        <option value="" disabled selected>Select a topic</option>
+                        <option value="order">Order Inquiry</option>
+                        <option value="shipping">Shipping & Delivery</option>
+                        <option value="returns">Returns & Exchanges</option>
+                        <option value="product">Product Questions</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="account">Account Issues</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactOrder">Order Number (if applicable)</label>
+                    <input type="text" id="contactOrder" placeholder="PU-2023-XXXXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactMessage">Message *</label>
+                    <textarea id="contactMessage" rows="6" placeholder="Please describe your issue or question in detail..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="contactAgreement" required>
+                        <span>I agree to the <a href="#">Privacy Policy</a> and allow Pulse to contact me regarding this inquiry.</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn-submit-message">
+                    <i class="fas fa-paper-plane"></i>
+                    Send Message
+                </button>
+            </form>
+            
+            <div class="form-disclaimer">
+                <p><i class="fas fa-info-circle"></i> For faster assistance, please include your order number if applicable.</p>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <div class="info-card">
+                <h3>Contact Information</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Email</h4>
+                        <a href="mailto:support@pulse.com">support@pulse.com</a>
+                        <p>General inquiries</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Phone</h4>
+                        <a href="tel:+18005551234">1-800-555-1234</a>
+                        <p>Mon-Fri, 9AM-6PM EST</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Office Address</h4>
+                        <p>123 Innovation Drive</p>
+                        <p>Cupertino, CA 95014</p>
+                        <p>United States</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="response-time-card">
+                <div class="time-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Typical Response Times</h3>
+                <ul class="response-times">
+                    <li>
+                        <span class="time-label">Live Chat:</span>
+                        <span class="time-value">Immediate</span>
+                    </li>
+                    <li>
+                        <span class="time-label">Email:</span>
+                        <span class="time-value">Within 24 hours</span>
+                    </li>
+                    <li>
+                        <span class="time-label">Phone:</span>
+                        <span class="time-value">During business hours</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="support-faq-section">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Quick answers to common questions</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-category">
+                <h3>Orders & Shipping</h3>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How long does shipping take?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Standard shipping: 3-5 business days within the US. Express shipping: 1-2 business days. International shipping: 7-14 business days depending on destination.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I track my order?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, once your order ships, you'll receive a tracking number via email. You can also track your order from your account dashboard.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do you ship internationally?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we ship to over 50 countries. International shipping fees and delivery times vary by location.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h3>Returns & Warranty</h3>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is your return policy?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day return policy for unused items in original packaging. Liquid-Glass bands have a 2-year warranty against manufacturing defects.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I return an item?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Initiate a return from your account dashboard or contact support. We'll provide a return label and instructions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What's covered under warranty?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The warranty covers manufacturing defects, self-healing failure (Liquid-Glass bands), and material defects. Normal wear and tear is not covered.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h3>Product & Compatibility</h3>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I know which band fits my Apple Watch?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Check your watch size on the back or in Settings > General > About. 38/40/41mm bands are compatible with each other, as are 42/44/45mm bands.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I care for Liquid-Glass bands?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Clean with a soft, damp cloth. Avoid harsh chemicals. Minor scratches will self-heal within 24-48 hours. Store away from extreme temperatures.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are the bands waterproof?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All bands are sweat and water-resistant. Liquid-Glass bands are fully waterproof up to 50 meters. We recommend removing bands before swimming.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="chat-title">
+                <i class="fas fa-comment-dots"></i>
+                <h3>Live Support</h3>
+            </div>
+            <button class="chat-close">&times;</button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message agent">
+                    <div class="message-content">
+                        <p>Hello! I'm Alex from Pulse support. How can I help you today?</p>
+                        <span class="message-time">Just now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message..." id="chatInput">
+                <button id="sendMessageBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chat Trigger Button -->
+    <button class="chat-trigger" id="chatTrigger">
+        <i class="fas fa-comment-dots"></i>
+        <span class="chat-label">Need Help?</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">PULSE</div>
+                <p>Nike × Apple Watch Bands</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-apple"></i></a>
+                    <a href="#"><i class="fab fa-nike"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <a href="bands.html">All Bands</a>
+                    <a href="watches.html">Apple Watches</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Best Sellers</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="support.html">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns & Exchanges</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About Pulse</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Press</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pulse. Nike and Apple are registered trademarks of their respective owners.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h3>Message Sent!</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+                <button class="btn-modal-close">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/liquid-glass.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/support.js"></script>
+</body>
+</html>

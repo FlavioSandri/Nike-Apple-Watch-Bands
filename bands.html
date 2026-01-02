@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Bands | Pulse</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/liquid-glass.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <!-- Liquid Glass Background -->
+    <div class="liquid-glass-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">PULSE</div>
+                <span class="logo-text">Nike × Apple</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="watches.html" class="nav-link">Watches</a>
+                <a href="bands.html" class="nav-link active">Bands</a>
+                <a href="register.html" class="nav-link">Account</a>
+                <a href="support.html" class="nav-link">Support</a>
+                <a href="#" class="cart-icon">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bands-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Nike Apple Watch Bands</h1>
+            <p class="hero-subtitle">Performance meets style. Choose from our collection of premium Nike bands designed specifically for Apple Watch.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>45+</h3>
+                    <p>Band Designs</p>
+                </div>
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>Apple Compatibility</p>
+                </div>
+                <div class="stat">
+                    <h3>2-Year</h3>
+                    <p>Warranty</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="filters-container">
+            <div class="filter-group">
+                <div class="filter-label">Filter by:</div>
+                
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">All Bands</button>
+                    <button class="filter-btn" data-filter="liquid-glass">Liquid-Glass</button>
+                    <button class="filter-btn" data-filter="sport">Sport</button>
+                    <button class="filter-btn" data-filter="premium">Premium</button>
+                    <button class="filter-btn" data-filter="limited">Limited Edition</button>
+                </div>
+            </div>
+            
+            <div class="sort-group">
+                <select class="sort-select" id="sortSelect">
+                    <option value="featured">Featured</option>
+                    <option value="newest">Newest First</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bands Grid Section -->
+    <section class="bands-main-section">
+        <div class="container">
+            <div class="bands-grid" id="bandsGrid">
+                <!-- API will populate this -->
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading bands collection...</p>
+                </div>
+            </div>
+            
+            <div class="pagination" id="pagination">
+                <button class="page-btn prev-btn" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="page-numbers">
+                    <button class="page-number active">1</button>
+                    <button class="page-number">2</button>
+                    <button class="page-number">3</button>
+                    <span class="page-dots">...</span>
+                    <button class="page-number">8</button>
+                </div>
+                <button class="page-btn next-btn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liquid-Glass Technology Banner -->
+    <section class="tech-banner">
+        <div class="banner-content">
+            <div class="tech-badge">
+                <i class="fas fa-gem"></i>
+                <span>Liquid-Glass Technology</span>
+            </div>
+            <h2>Experience the Future of Watch Bands</h2>
+            <p>Our proprietary Liquid-Glass material offers self-healing properties, enhanced durability, and a premium finish that lasts.</p>
+            <a href="#liquid-glass-bands" class="btn-tech">Explore Liquid-Glass Bands</a>
+        </div>
+        <div class="banner-image">
+            <div class="liquid-demo-sm">
+                <!-- Small liquid animation -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility Section -->
+    <section class="compatibility-section">
+        <div class="section-header">
+            <h2>Apple Watch Compatibility</h2>
+            <p>Find the perfect band for your Apple Watch</p>
+        </div>
+        
+        <div class="compatibility-grid">
+            <div class="watch-model">
+                <div class="watch-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>Apple Watch Series 9</h3>
+                <p>41mm & 45mm</p>
+                <span class="compatibility-badge">45 Bands</span>
+            </div>
+            
+            <div class="watch-model">
+                <div class="watch-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>Apple Watch Ultra 2</h3>
+                <p>49mm</p>
+                <span class="compatibility-badge">32 Bands</span>
+            </div>
+            
+            <div class="watch-model">
+                <div class="watch-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>Apple Watch SE</h3>
+                <p>40mm & 44mm</p>
+                <span class="compatibility-badge">38 Bands</span>
+            </div>
+            
+            <div class="watch-model">
+                <div class="watch-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>Apple Watch Series 8</h3>
+                <p>41mm & 45mm</p>
+                <span class="compatibility-badge">42 Bands</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="collections-section">
+        <div class="section-header">
+            <h2>Featured Collections</h2>
+            <p>Curated selections for every lifestyle</p>
+        </div>
+        
+        <div class="collections-grid">
+            <div class="collection-card">
+                <div class="collection-image" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49');">
+                    <div class="collection-overlay">
+                        <h3>Sport Collection</h3>
+                        <p>For athletes and active lifestyles</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-card">
+                <div class="collection-image" style="background-image: url('https://images.unsplash.com/photo-1553062407-98eeb64c6a62');">
+                    <div class="collection-overlay">
+                        <h3>Premium Collection</h3>
+                        <p>Luxury materials and finishes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-card">
+                <div class="collection-image" style="background-image: url('https://images.unsplash.com/photo-1579586337278-3f9a8c97d6e0');">
+                    <div class="collection-overlay">
+                        <h3>Liquid-Glass Series</h3>
+                        <p>Innovative self-healing technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Size Guide -->
+    <section class="size-guide-section">
+        <div class="size-guide-container">
+            <div class="guide-content">
+                <h2>Find Your Perfect Fit</h2>
+                <p>Use our size guide to ensure the perfect fit for your Apple Watch</p>
+                
+                <div class="size-options">
+                    <div class="size-option">
+                        <div class="size-circle">38/40/41mm</div>
+                        <span>Small Wrist</span>
+                    </div>
+                    <div class="size-option">
+                        <div class="size-circle">42/44/45mm</div>
+                        <span>Medium Wrist</span>
+                    </div>
+                    <div class="size-option">
+                        <div class="size-circle">49mm</div>
+                        <span>Large Wrist</span>
+                    </div>
+                </div>
+                
+                <button class="btn-size-guide">View Full Size Guide</button>
+            </div>
+            
+            <div class="guide-image">
+                <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6" alt="Watch Size Guide">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">PULSE</div>
+                <p>Nike × Apple Watch Bands</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-apple"></i></a>
+                    <a href="#"><i class="fab fa-nike"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <a href="bands.html">All Bands</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Best Sellers</a>
+                    <a href="#">Liquid-Glass Collection</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="support.html">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns & Exchanges</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About Pulse</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Press</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pulse. Nike and Apple are registered trademarks of their respective owners.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Band Quick View Modal -->
+    <div class="modal" id="bandModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalBandName">Nike Sport Loop</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Content populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/liquid-glass.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/bands.js"></script>
+</body>
+</html>

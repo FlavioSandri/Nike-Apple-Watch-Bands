@@ -1,0 +1,155 @@
+.liquid-glass-effect {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+}
+
+.liquid-glass-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+.liquid-glass-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: liquidShine 8s infinite linear;
+}
+
+@keyframes liquidShine {
+    0% {
+        transform: rotate(30deg) translate(-30%, -30%);
+    }
+    100% {
+        transform: rotate(30deg) translate(30%, 30%);
+    }
+}
+
+.btn-liquid {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-liquid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s ease;
+    z-index: -1;
+}
+
+.btn-liquid:hover::before {
+    left: 100%;
+}
+
+.liquid-card {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.liquid-card .liquid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 70%
+    );
+    animation: cardShine 3s infinite;
+}
+
+@keyframes cardShine {
+    0% {
+        transform: translateX(-100%) skewX(-15deg);
+    }
+    100% {
+        transform: translateX(200%) skewX(-15deg);
+    }
+}
+
+.liquid-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    animation: particleFloat 20s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+    25% {
+        transform: translate(100px, 50px) scale(1.2);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(50px, 100px) scale(1);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translate(-50px, 50px) scale(0.8);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+}
+
+.nav-liquid {
+    position: relative;
+}
+
+.nav-liquid::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--apple-blue), transparent);
+    transition: width 0.3s ease;
+}
+
+.nav-liquid:hover::after {
+    width: 100%;
+}

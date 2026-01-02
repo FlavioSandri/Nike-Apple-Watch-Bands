@@ -1,0 +1,56 @@
+{
+  "name": "pulse-website",
+  "version": "1.0.0",
+  "description": "Nike Apple Watch Bands E-commerce Platform",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "nodemon api/server.js",
+    "build": "echo 'Frontend build complete'",
+    "test": "jest --testPathPattern=test/.*\\.js$ --verbose",
+    "db:init": "mysql -u root -p < api/database.sql",
+    "db:seed": "node api/scripts/seed.js",
+    "lint": "eslint api/ js/",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+  },
+  "keywords": [
+    "apple-watch",
+    "nike-bands",
+    "e-commerce",
+    "liquid-glass"
+  ],
+  "author": "Pulse Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.0.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "nodemailer": "^6.9.2",
+    "express-rate-limit": "^6.10.0",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "jest": "^29.6.1",
+    "supertest": "^6.3.3",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pulse-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/pulse-website/issues"
+  },
+  "homepage": "https://github.com/yourusername/pulse-website#readme"
+}
