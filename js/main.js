@@ -399,3 +399,424 @@ window.Pulse = {
         console.log('Add to cart:', productId);
     }
 };
+
+// ============================================
+// NOVAS ANIMAÇÕES E CAROUSEL
+// ============================================
+
+// Initialize carousels and animations
+function initEnhancedAnimations() {
+    initWatchesCarousel();
+    initFloatingParticles();
+    initHoverEffects();
+    initScrollAnimations();
+    initParallaxEffects();
+}
+
+// Watches Carousel
+function initWatchesCarousel() {
+    const carousel = document.getElementById('watchesCarousel');
+    const prevBtn = document.getElementById('prevWatch');
+    const nextBtn = document.getElementById('nextWatch');
+    const dotsContainer = document.getElementById('watchDots');
+    
+    if (!carousel || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    let slides = [];
+    let autoSlideInterval;
+    
+    // Load watches and initialize carousel
+    loadWatchesForCarousel();
+    
+    async function loadWatchesForCarousel() {
+        try {
+            const watches = await PulseAPI.getWatches();
+            
+            // Clear loading
+            carousel.innerHTML = '';
+            
+            // Create watch cards
+            watches.slice(0, 5).forEach((watch, index) => {
+                const watchCard = createWatchCard(watch);
+                watchCard.style.transform = `translateX(${index * 100}%)`;
+                carousel.appendChild(watchCard);
+                slides.push(watchCard);
+            });
+            
+            // Create dots
+            createDots();
+            
+            // Start auto-slide
+            startAutoSlide();
+            
+        } catch (error) {
+            console.error('Error loading watches for carousel:', error);
+            carousel.innerHTML = '<div class="error-message"><p>Unable to load watches</p></div>';
+        }
+    }
+    
+    function createWatchCard(watch) {
+        const card = document.createElement('div');
+        card.className = 'watch-card hover-lift-3d';
+        
+        card.innerHTML = `
+            <div class="watch-image">
+                <img src="${watch.image_url || 'https://images.unsplash.com/photo-1579586337278-3f9a8c97d6e0'}" 
+                     alt="${watch.name}"
+                     loading="lazy">
+                <div class="watch-badge">New</div>
+            </div>
+            <div class="watch-info">
+                <h4>${watch.name}</h4>
+                <div class="watch-price">$${watch.price}</div>
+                <div class="watch-features">
+                    <span><i class="fas fa-expand-alt"></i> ${watch.sizes ? JSON.parse(watch.sizes)[0] : '45mm'}</span>
+                    <span><i class="fas fa-bolt"></i> ${watch.features ? JSON.parse(watch.features).length : 5}+ features</span>
+                </div>
+                <button class="btn-view-details" data-id="${watch.id}">
+                    <i class="fas fa-eye"></i> View Details
+                </button>
+            </div>
+        `;
+        
+        // Add click event
+        card.querySelector('.btn-view-details').addEventListener('click', function() {
+            window.location.href = `watches.html#watch-${watch.id}`;
+        });
+        
+        return card;
+    }
+    
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+    }
+    
+    function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    function updateCarousel() {
+        const translateX = -currentIndex * 100;
+        carousel.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+    
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+    
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+    });
+    
+    // Pause auto-slide on hover
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
+    
+    // Touch/swipe support
+    let startX = 0;
+    let endX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        stopAutoSlide();
+    });
+    
+    carousel.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+    
+    carousel.addEventListener('touchend', () => {
+        const threshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+        
+        startAutoSlide();
+    });
+}
+
+// Floating Particles
+function initFloatingParticles() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+    
+    // Create particles container
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'floating-particles';
+    heroSection.appendChild(particlesContainer);
+    
+    // Create particles
+    for (let i = 0; i < 30; i++) {
+        createParticle(particlesContainer);
+    }
+    
+    function createParticle(container) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Random properties
+        const size = Math.random() * 4 + 2;
+        const startX = Math.random() * 100;
+        const startY = Math.random() * 100;
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 5;
+        const hue = Math.random() * 60 + 180;
+        
+        // Apply styles
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${startX}%`;
+        particle.style.top = `${startY}%`;
+        particle.style.background = `hsla(${hue}, 70%, 70%, 0.6)`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        
+        container.appendChild(particle);
+        
+        // Remove and recreate after animation
+        setTimeout(() => {
+            if (particle.parentNode === container) {
+                container.removeChild(particle);
+                createParticle(container);
+            }
+        }, duration * 1000);
+    }
+}
+
+// Enhanced Hover Effects
+function initHoverEffects() {
+    // Add ripple effect to buttons
+    document.querySelectorAll('.btn-primary, .btn-secondary, .btn-view-details').forEach(button => {
+        button.addEventListener('click', function(e) {
+            createRippleEffect(this, e);
+        });
+    });
+    
+    // Add hover effects to cards
+    document.querySelectorAll('.watch-card, .band-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.zIndex = '1';
+        });
+    });
+}
+
+function createRippleEffect(element, event) {
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        if (ripple.parentNode === element) {
+            element.removeChild(ripple);
+        }
+    }, 600);
+}
+
+// Enhanced Scroll Animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Stagger children animations
+                const children = entry.target.querySelectorAll('.stagger-child');
+                children.forEach((child, index) => {
+                    child.style.animationDelay = `${index * 0.1}s`;
+                    child.classList.add('animate-in');
+                });
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements with animation classes
+    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+}
+
+// Parallax Effects
+function initParallaxEffects() {
+    const parallaxElements = document.querySelectorAll('.parallax');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        parallaxElements.forEach(element => {
+            const rate = element.dataset.rate || 0.5;
+            const offset = scrolled * rate;
+            element.style.transform = `translateY(${offset}px)`;
+        });
+    });
+}
+
+// ============================================
+// ATUALIZAR A FUNÇÃO initSite NO main.js
+// ============================================
+
+// No seu main.js existente, substitua a função initSite por:
+
+function initSite() {
+    // Initialize mobile menu
+    initMobileMenu();
+    
+    // Initialize liquid glass effect
+    initLiquidGlass();
+    
+    // Initialize enhanced animations
+    initEnhancedAnimations();
+    
+    // Load featured bands from API
+    loadFeaturedBands();
+    
+    // Initialize newsletter form
+    initNewsletterForm();
+    
+    // Initialize cart functionality
+    initCart();
+    
+    // Add floating shapes to hero
+    addFloatingShapes();
+}
+
+function addFloatingShapes() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+    
+    const shapesContainer = document.createElement('div');
+    shapesContainer.className = 'floating-shapes';
+    heroSection.appendChild(shapesContainer);
+    
+    // Add shapes
+    for (let i = 0; i < 3; i++) {
+        const shape = document.createElement('div');
+        shape.className = `floating-shape animation-delay-${i + 1}`;
+        shapesContainer.appendChild(shape);
+    }
+}
+
+// ============================================
+// ATUALIZAR A FUNÇÃO loadFeaturedBands
+// ============================================
+
+// Substitua a função loadFeaturedBands no main.js por:
+
+async function loadFeaturedBands() {
+    const bandsContainer = document.getElementById('featuredBands');
+    
+    if (!bandsContainer) return;
+    
+    try {
+        // Show loading
+        bandsContainer.innerHTML = '<div class="loading-spinner"><div class="spinner"></div><p>Loading featured bands...</p></div>';
+        
+        // Load bands from API
+        const bands = await PulseAPI.getFeaturedBands();
+        
+        // Clear loading
+        bandsContainer.innerHTML = '';
+        
+        // Create band cards
+        bands.forEach(band => {
+            const bandCard = createBandCard(band);
+            bandsContainer.appendChild(bandCard);
+        });
+        
+    } catch (error) {
+        console.error('Error loading featured bands:', error);
+        bandsContainer.innerHTML = '<div class="error-message"><p>Unable to load bands</p></div>';
+    }
+}
+
+function createBandCard(band) {
+    const card = document.createElement('div');
+    card.className = `band-card hover-lift-3d ${band.liquid_glass ? 'liquid-glass' : ''}`;
+    
+    const liquidBadge = band.liquid_glass ? 
+        '<div class="liquid-tag"><i class="fas fa-gem"></i> Liquid-Glass</div>' : '';
+    
+    card.innerHTML = `
+        <div class="band-image">
+            <img src="${band.image_url || 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49'}" 
+                 alt="${band.name}"
+                 loading="lazy">
+            ${liquidBadge}
+        </div>
+        <div class="band-info">
+            <h4>${band.name}</h4>
+            <p class="band-color">${band.color}</p>
+            <div class="band-price">$${band.price}</div>
+            <button class="btn-add-to-cart" data-id="${band.id}">
+                <i class="fas fa-shopping-bag"></i> Add to Cart
+            </button>
+        </div>
+    `;
+    
+    // Add click event
+    card.querySelector('.btn-add-to-cart').addEventListener('click', function() {
+        Pulse.addToCart(band.id);
+        Pulse.showNotification('Added to cart', 'success');
+    });
+    
+    return card;
+}

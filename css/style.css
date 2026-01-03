@@ -2181,3 +2181,521 @@ body {
         left: 20px;
     }
 }
+
+/* ============================================
+   CORREÇÕES E NOVOS ESTILOS PARA A HOME
+   ============================================ */
+
+/* Featured Products Section */
+.featured-products {
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.featured-products::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(
+        circle,
+        rgba(0, 122, 255, 0.05) 0%,
+        transparent 70%
+    );
+    z-index: 0;
+    animation: morphLiquid 20s ease-in-out infinite;
+}
+
+.products-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 1024px) {
+    .products-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.product-category {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.product-category:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(0, 122, 255, 0.1);
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.category-header h3 {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--apple-black);
+}
+
+.category-header h3 i {
+    font-size: 1.8rem;
+}
+
+.category-header .fa-apple {
+    color: #000;
+}
+
+.category-header .fa-nike {
+    color: #000;
+}
+
+.view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--apple-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.view-all:hover {
+    gap: 1rem;
+    color: #000;
+}
+
+/* Watches Carousel */
+.watches-carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 1rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    gap: 2rem;
+}
+
+.watch-card {
+    min-width: 280px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.watch-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(0, 122, 255, 0.1);
+}
+
+.watch-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #007aff, #5856d6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.watch-card:hover::before {
+    opacity: 1;
+}
+
+.watch-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.watch-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.watch-card:hover .watch-image img {
+    transform: scale(1.1);
+}
+
+.watch-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.watch-info {
+    padding: 1.5rem;
+}
+
+.watch-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--apple-black);
+}
+
+.watch-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--apple-black);
+    margin-bottom: 1rem;
+}
+
+.watch-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--apple-gray);
+}
+
+.watch-features span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.btn-view-details {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-view-details:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: var(--apple-blue);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 15px 40px rgba(0, 122, 255, 0.3);
+}
+
+.carousel-btn.prev {
+    left: -25px;
+}
+
+.carousel-btn.next {
+    right: -25px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--apple-blue);
+    transform: scale(1.2);
+}
+
+/* Bands Grid */
+.bands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.band-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.band-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(0, 122, 255, 0.1);
+}
+
+.band-card.liquid-glass {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #007aff, #5856d6, #af52de) border-box;
+}
+
+.band-image {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.band-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.band-card:hover .band-image img {
+    transform: scale(1.1);
+}
+
+.liquid-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(45deg, #007aff, #5856d6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+}
+
+.band-info {
+    padding: 1.5rem;
+}
+
+.band-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--apple-black);
+}
+
+.band-color {
+    font-size: 0.9rem;
+    color: var(--apple-gray);
+    margin-bottom: 0.5rem;
+}
+
+.band-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--apple-black);
+    margin-bottom: 1rem;
+}
+
+.btn-add-to-cart {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-add-to-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Tech Section Updates */
+.tech-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0, 122, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-card:hover .tech-glow {
+    opacity: 1;
+}
+
+.demo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Newsletter Updates */
+.newsletter-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-section .liquid-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 122, 255, 0.3), transparent 70%);
+    filter: blur(40px);
+    opacity: 0.2;
+    z-index: 0;
+    animation: float3D 15s ease-in-out infinite;
+}
+
+.newsletter-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: var(--apple-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .carousel-btn.prev {
+        left: -20px;
+    }
+    
+    .carousel-btn.next {
+        right: -20px;
+    }
+    
+    .watch-card,
+    .band-card {
+        min-width: 250px;
+    }
+    
+    .products-container {
+        padding: 0 1rem;
+    }
+    
+    .product-category {
+        padding: 1.5rem;
+    }
+    
+    .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .category-header .view-all {
+        align-self: flex-end;
+    }
+}
+

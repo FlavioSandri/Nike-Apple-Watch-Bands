@@ -10,10 +10,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        /* Estilos temporários para as novas animações */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .scroll-animate.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-child {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .stagger-child.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .parallax {
+            transition: transform 0.3s ease-out;
+        }
+    </style>
 </head>
 <body>
+    <!-- Liquid Glass Background -->
     <div class="liquid-glass-bg"></div>
     
+    <!-- Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -41,9 +71,11 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero scroll-animate parallax" data-rate="0.3">
+        <div class="floating-shapes"></div>
         <div class="hero-content">
-            <div class="brand-logos">
+            <div class="brand-logos animation-bounce-rotate">
                 <div class="apple-logo">
                     <svg viewBox="0 0 24 24" width="60" height="60">
                         <path d="M14.94,5.19A4.38,4.38,0,0,0,16,2,4.44,4.44,0,0,0,13,3.52,4.17,4.17,0,0,0,12,6.61,3.69,3.69,0,0,0,14.94,5.19Zm2.52,7.44a4.51,4.51,0,0,1,2.16-3.81,4.66,4.66,0,0,0-3.66-2c-1.56-.16-3,.91-3.83.91s-2-.89-3.3-.87A4.92,4.92,0,0,0,4.69,9.39C2.93,12.45,4.24,17,6,19.47,6.8,20.68,7.8,22.05,9.12,22s1.75-.76,3.28-.76,2,.76,3.3.73,2.22-1.24,3.06-2.45a11,11,0,0,0,1.38-2.85A4.41,4.41,0,0,1,17.46,12.63Z"/>
@@ -57,120 +89,169 @@
                 </div>
             </div>
             
-            <h1 class="hero-title">ELEVATE YOUR PULSE</h1>
+            <h1 class="hero-title animation-float-3d">ELEVATE YOUR PULSE</h1>
             <p class="hero-subtitle">Where innovation meets performance. The perfect fusion of Apple technology and Nike athletic excellence.</p>
             
             <div class="hero-buttons">
-                <a href="bands.html" class="btn-primary">Explore Bands</a>
-                <a href="watches.html" class="btn-secondary">View Watches</a>
+                <a href="bands.html" class="btn-primary hover-shimmer">Explore Bands</a>
+                <a href="watches.html" class="btn-secondary hover-shimmer">View Watches</a>
             </div>
         </div>
         
         <div class="hero-image">
             <div class="watch-showcase">
-                <div class="watch-container">
+                <div class="watch-container animated-border">
                     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1099&q=80" alt="Apple Watch with Nike Band" class="watch-img">
-                    <div class="liquid-glass-overlay"></div>
+                    <div class="liquid-glass-overlay animation-shimmer"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Particles -->
+        <div class="floating-particles"></div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products scroll-animate">
+        <div class="section-header">
+            <h2>Featured Collection</h2>
+            <p>Discover our premium selection of Apple Watches and Nike bands</p>
+        </div>
+        
+        <div class="products-container">
+            <!-- Watches Carousel -->
+            <div class="product-category hover-lift-3d">
+                <div class="category-header">
+                    <h3><i class="fab fa-apple"></i> Apple Watches</h3>
+                    <a href="watches.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="watches-carousel">
+                    <div class="carousel-track" id="watchesCarousel">
+                        <!-- Watches will be loaded by API -->
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                            <p>Loading watches...</p>
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-btn prev" id="prevWatch">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next" id="nextWatch">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <div class="carousel-dots" id="watchDots">
+                        <!-- Dots will be generated by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bands Grid -->
+            <div class="product-category hover-lift-3d">
+                <div class="category-header">
+                    <h3><i class="fab fa-nike"></i> Nike Bands</h3>
+                    <a href="bands.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="bands-grid" id="featuredBands">
+                    <!-- Bands will be loaded by API -->
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading bands...</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="featured-section">
-        <div class="section-header">
-            <h2>Featured Nike Bands</h2>
-            <p>Premium bands designed for athletes and innovators</p>
-        </div>
-        
-        <div class="bands-grid" id="featured-bands">
-            <div class="loading-spinner">
-                <div class="spinner"></div>
-                <p>Loading featured bands...</p>
-            </div>
-        </div>
-        
-        <div class="section-footer">
-            <a href="bands.html" class="btn-view-all">View All Collections <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </section>
-
-    <section class="story-section">
-        <div class="story-content">
+    <!-- Partnership Story -->
+    <section class="story-section scroll-animate">
+        <div class="story-content stagger-child">
             <h2>A Partnership Forged in Innovation</h2>
             <p>When Apple's groundbreaking technology meets Nike's athletic heritage, something extraordinary happens. Pulse represents the ultimate synergy between form and function, technology and performance.</p>
             
             <div class="story-stats">
-                <div class="stat">
+                <div class="stat hover-scale-rotate animation-delay-1">
                     <h3>45+</h3>
                     <p>Exclusive Band Designs</p>
                 </div>
-                <div class="stat">
+                <div class="stat hover-scale-rotate animation-delay-2">
                     <h3>100%</h3>
                     <p>Apple Watch Compatibility</p>
                 </div>
-                <div class="stat">
+                <div class="stat hover-scale-rotate animation-delay-3">
                     <h3>2-Year</h3>
                     <p>Warranty on All Products</p>
                 </div>
             </div>
         </div>
         
-        <div class="story-image">
-            <div class="liquid-glass-card">
+        <div class="story-image stagger-child">
+            <div class="liquid-glass-card animation-morph hover-glow">
                 <img src="https://images.unsplash.com/photo-1551816230-ef5deaed4a26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1065&q=80" alt="Apple and Nike Collaboration">
+                <div class="liquid-overlay"></div>
             </div>
         </div>
     </section>
 
-    <section class="tech-section">
+    <!-- Liquid-Glass Technology -->
+    <section class="tech-section scroll-animate">
         <div class="section-header">
             <h2>Liquid-Glass Technology</h2>
             <p>Our proprietary material innovation</p>
         </div>
         
         <div class="tech-features">
-            <div class="tech-card">
+            <div class="tech-card hover-lift-3d animation-glow">
                 <div class="tech-icon liquid-icon">
                     <i class="fas fa-tint"></i>
                 </div>
                 <h3>Self-Healing Surface</h3>
                 <p>Microscopic scratches disappear within 24 hours</p>
+                <div class="tech-glow"></div>
             </div>
             
-            <div class="tech-card">
+            <div class="tech-card hover-lift-3d animation-glow animation-delay-1">
                 <div class="tech-icon liquid-icon">
                     <i class="fas fa-wind"></i>
                 </div>
                 <h3>Enhanced Breathability</h3>
                 <p>37% more airflow than standard sport bands</p>
+                <div class="tech-glow"></div>
             </div>
             
-            <div class="tech-card">
+            <div class="tech-card hover-lift-3d animation-glow animation-delay-2">
                 <div class="tech-icon liquid-icon">
                     <i class="fas fa-weight-hanging"></i>
                 </div>
                 <h3>Feather-Light</h3>
                 <p>15% lighter without compromising durability</p>
+                <div class="tech-glow"></div>
             </div>
         </div>
         
-        <div class="tech-demo">
+        <div class="tech-demo animated-border">
             <div class="liquid-demo-container">
                 <div class="liquid-demo" id="liquidDemo">
+                    <!-- Liquid glass animation will be here -->
                 </div>
             </div>
+            <div class="demo-overlay animation-wave"></div>
         </div>
     </section>
 
-    <section class="newsletter-section">
+    <!-- Newsletter -->
+    <section class="newsletter-section scroll-animate">
         <div class="newsletter-content">
-            <h2>Stay in the Loop</h2>
+            <h2 class="animation-neon">Stay in the Loop</h2>
             <p>Be the first to know about new band releases and exclusive collaborations</p>
             
             <form class="newsletter-form" id="newsletterForm">
                 <div class="form-group">
-                    <input type="email" placeholder="Your email address" required>
-                    <button type="submit" class="btn-subscribe">Subscribe</button>
+                    <input type="email" placeholder="Your email address" required class="hover-shimmer">
+                    <button type="submit" class="btn-subscribe hover-lift-3d">Subscribe</button>
                 </div>
                 <div class="form-disclaimer">
                     <input type="checkbox" id="privacyCheck" required>
@@ -178,44 +259,50 @@
                 </div>
             </form>
         </div>
+        
+        <!-- Liquid Orbs Background -->
+        <div class="liquid-orb animation-delay-1"></div>
+        <div class="liquid-orb animation-delay-2"></div>
+        <div class="liquid-orb animation-delay-3"></div>
     </section>
 
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-brand">
                 <div class="logo">PULSE</div>
                 <p>Nike × Apple Watch Bands</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-apple"></i></a>
-                    <a href="#"><i class="fab fa-nike"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover-glow"><i class="fab fa-apple"></i></a>
+                    <a href="#" class="hover-glow"><i class="fab fa-nike"></i></a>
+                    <a href="#" class="hover-glow"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover-glow"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             
             <div class="footer-links">
                 <div class="footer-column">
                     <h4>Shop</h4>
-                    <a href="bands.html">All Bands</a>
-                    <a href="watches.html">Apple Watches</a>
-                    <a href="#">New Arrivals</a>
-                    <a href="#">Best Sellers</a>
+                    <a href="bands.html" class="hover-shimmer">All Bands</a>
+                    <a href="watches.html" class="hover-shimmer">Apple Watches</a>
+                    <a href="#" class="hover-shimmer">New Arrivals</a>
+                    <a href="#" class="hover-shimmer">Best Sellers</a>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Support</h4>
-                    <a href="support.html">Contact Us</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Shipping Info</a>
-                    <a href="#">Returns & Exchanges</a>
+                    <a href="support.html" class="hover-shimmer">Contact Us</a>
+                    <a href="#" class="hover-shimmer">FAQ</a>
+                    <a href="#" class="hover-shimmer">Shipping Info</a>
+                    <a href="#" class="hover-shimmer">Returns & Exchanges</a>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Company</h4>
-                    <a href="#">About Pulse</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Sustainability</a>
-                    <a href="#">Press</a>
+                    <a href="#" class="hover-shimmer">About Pulse</a>
+                    <a href="#" class="hover-shimmer">Careers</a>
+                    <a href="#" class="hover-shimmer">Sustainability</a>
+                    <a href="#" class="hover-shimmer">Press</a>
                 </div>
             </div>
         </div>
@@ -223,15 +310,65 @@
         <div class="footer-bottom">
             <p>&copy; 2023 Pulse. Nike and Apple are registered trademarks of their respective owners.</p>
             <div class="legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
+                <a href="#" class="hover-shimmer">Privacy Policy</a>
+                <a href="#" class="hover-shimmer">Terms of Service</a>
+                <a href="#" class="hover-shimmer">Cookie Policy</a>
             </div>
         </div>
     </footer>
 
+    <!-- Liquid Orbs Floating -->
+    <div class="liquid-orb" style="top: 20%; left: 5%; width: 150px; height: 150px;"></div>
+    <div class="liquid-orb" style="top: 60%; right: 10%; width: 100px; height: 100px; animation-delay: 1s;"></div>
+    <div class="liquid-orb" style="bottom: 30%; left: 15%; width: 120px; height: 120px; animation-delay: 2s;"></div>
+
     <script src="js/main.js"></script>
     <script src="js/liquid-glass.js"></script>
     <script src="js/api.js"></script>
+    
+    <script>
+        // Inicializar animações quando o DOM carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicionar classes de animação aos elementos
+            setTimeout(() => {
+                document.querySelectorAll('.scroll-animate').forEach(el => {
+                    el.classList.add('animate-in');
+                });
+                
+                document.querySelectorAll('.stagger-child').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('animate-in');
+                    }, index * 200);
+                });
+            }, 300);
+            
+            // Inicializar carousel de relógios
+            if (typeof initWatchesCarousel === 'function') {
+                initWatchesCarousel();
+            }
+            
+            // Inicializar partículas flutuantes
+            if (typeof initFloatingParticles === 'function') {
+                initFloatingParticles();
+            }
+            
+            // Inicializar efeitos de hover
+            if (typeof initHoverEffects === 'function') {
+                initHoverEffects();
+            }
+        });
+        
+        // Efeito de parallax no scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(element => {
+                const rate = element.dataset.rate || 0.3;
+                const offset = scrolled * rate;
+                element.style.transform = `translateY(${offset}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
